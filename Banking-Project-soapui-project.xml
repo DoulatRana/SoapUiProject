@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2fc60170-3698-4e75-a786-eee021101a24" activeEnvironment="Default" name="Banking Project" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="09b49c6b-f321-4204-96c9-247d20160ee4" wsaVersion="NONE" name="blzServiceSoapBinding" type="wsdl" bindingName="{http://www.springframework.org/schema/beans}blzServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/services/blzService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/services/blzService?wsdl"><con:part><con:url>http://localhost:8080/services/blzService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="blzService" targetNamespace="http://www.springframework.org/schema/beans" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.springframework.org/schema/beans" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://thomas-bayer.com/blz/">
+  <wsdl:import location="http://localhost:8080/services/blzService?wsdl=BLZServicePortType.wsdl" namespace="http://thomas-bayer.com/blz/"></wsdl:import>
+  <wsdl:binding name="blzServiceSoapBinding" type="ns1:BLZServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBank">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBankResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="blzService">
+    <wsdl:port binding="tns:blzServiceSoapBinding" name="$Proxy87Port">
+      <soap:address location="http://localhost:8080/services/blzService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/services/blzService?wsdl=BLZServicePortType.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BLZServicePortType" targetNamespace="http://thomas-bayer.com/blz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://thomas-bayer.com/blz/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://thomas-bayer.com/blz/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://thomas-bayer.com/blz/">
+      <xs:element name="getBank" type="tns:getBankType"/>
+      <xs:element name="getBankResponse" type="tns:getBankResponseType"/>
+      <xs:complexType name="getBankType">
+        <xs:sequence>
+          <xs:element name="blz" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getBankResponseType">
+        <xs:sequence>
+          <xs:element name="details" type="tns:detailsType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="detailsType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+          <xs:element minOccurs="0" name="bic" type="xs:string"/>
+          <xs:element minOccurs="0" name="ort" type="xs:string"/>
+          <xs:element minOccurs="0" name="plz" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getBank">
+    <wsdl:part element="ns1:getBank" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part element="ns1:getBankResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BLZServicePortType">
+    <wsdl:operation name="getBank">
+      <wsdl:input message="ns1:getBank" name="getBank"></wsdl:input>
+      <wsdl:output message="ns1:getBankResponse" name="getBankResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/services/blzService</con:endpoint><con:endpoint>http://localhost:8088/BLZLocalService</con:endpoint></con:endpoints><con:operation id="a68deebc-7ef6-403d-91fc-f231ac91764b" isOneWay="false" action="" name="getBank" bindingOperationName="getBank" type="Request-Response" outputName="getBankResponse" inputName="getBank" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="72a3a97b-a8ca-4231-a6b6-5dbae0c214e1" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/blzService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <blz:getBank>\r
+         <blz:blz>55010111</blz:blz>\r
+      </blz:getBank>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.springframework.org/schema/beans/BLZServicePortType/getBank"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="1280a897-fd10-4517-a067-666691132c2d" name="TS01_BankService"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="0101c3bf-9d89-46cf-91b8-3d77fa863156" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC01_to test getBank Operation 55010111" searchProperties="true"><con:settings/><con:testStep type="request" id="a84e71ec-e96d-4f07-9845-f10c3e6966b3" name="getBank - Request with BLZ Code 55010111"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>blzServiceSoapBinding</con:interface><con:operation>getBank</con:operation><con:request name="getBank - Request with BLZ Code 55010111" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="b5710bad-7a88-4b3b-bebd-a9977c0818f1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/BLZLocalService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <blz:getBank>\r
+         <blz:blz>55010111</blz:blz>\r
+      </blz:getBank>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="61f22cc9-5fc3-47f1-98e7-ce44eefe9077" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.springframework.org/schema/beans/BLZServicePortType/getBank"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="36eb5cb8-7ba0-4c06-ba7a-a8b06cd07666" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC02_to test get Operation 55010424" searchProperties="true"><con:settings/><con:testStep type="request" id="18c9e8b8-e5ee-491d-a098-954d1b216133" name="getBank - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>blzServiceSoapBinding</con:interface><con:operation>getBank</con:operation><con:request name="getBank - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a461cfb-9240-4e51-ad2e-c979295812a2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/BLZLocalService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <blz:getBank>\r
+         <blz:blz>55010424</blz:blz>\r
+      </blz:getBank>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9444b22f-e63f-4990-b5d7-3423ed120036" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.springframework.org/schema/beans/BLZServicePortType/getBank"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="9ad66cb7-be3a-4385-9eff-026c66618b79" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC03_to test get Operation 55010800" searchProperties="true"><con:settings/><con:testStep type="request" id="9fd78713-032c-46f1-bd09-80173b474a72" name="getBank - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>blzServiceSoapBinding</con:interface><con:operation>getBank</con:operation><con:request name="getBank - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="7a461cfb-9240-4e51-ad2e-c979295812a2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/blzService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <blz:getBank>\r
+         <blz:blz>55010800</blz:blz>\r
+      </blz:getBank>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9444b22f-e63f-4990-b5d7-3423ed120036" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.springframework.org/schema/beans/BLZServicePortType/getBank"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
